@@ -1,0 +1,138 @@
+<?php
+$template = [
+    "spider" => "./yqx.jar",
+    "wallpaper" => "https://bing.img.run/rand.php",
+    "headers" => [
+        [
+            "host" => "www.gs4x7nq4.com",
+            "header" => [
+                "User-Agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.6261.95 Safari/537.36"
+            ]
+        ],
+        [
+            "host" => "brand.hinrijv.cc",
+            "header" => [
+                "Accept" => "text/html,application/xhtml+xml,application/xml;q=0.9,image/jpg,image/webp,image/apng,*/*;q=0.8"
+            ]
+        ]
+    ],
+    "sites" => [
+        [
+            "key" => "爱奇艺资源",
+            "name" => "爱奇艺|CJ",
+            "type" => 1,
+            "api" => "https://iqiyizyapi.com/api.php/provide/vod/",
+            "searchable" => 1,
+            "quickSearch" => 1,
+            "categories" => ["国产动漫", "日韩动漫", "欧美动漫", "港台动漫", "动漫电影", "动漫", "电影", "动作片", "喜剧片", "爱情片", "科幻片", "恐怖片", "剧情片", "战争片", "惊悚片", "家庭片", "古装片", "历史片", "悬疑片", "犯罪片", "灾难片", "记录片", "短片", "连续剧", "国产剧", "香港剧", "韩国剧", "欧美剧", "台湾剧", "日本剧", "海外剧", "泰国剧", "综艺", "大陆综艺", "港台综艺", "日韩综艺", "欧美综艺", "短剧"]
+        ],
+        ["key" => "农民影视","name" => "农民|御","type" => 3,"api" => "csp_XYQHiker","searchable" => 1,"quickSearch" => 1,"filterable" => 1,"ext" => "./lib/御-农民影视.json"]
+    ],
+    "parses" => [
+        ["name" => "超级并发","type" => 3,"url" => "Demo"],
+        ["name" => "超级嗅探","type" => 3,"url" => "Web"]
+    ],
+    "flags" => ["youku","qq","QQ","iqiyi","qiyi","letv","sohu","tudou","pptv","PPTV","mgtv","ltnb","rx","CL4K","xfyun","wuduzy","wasu","bilibili","renrenmi","xmm","xigua","m1905 ","funshion ","duoduozy","xinluan","ddzy","tgqp","tkqp","XRJX","优酷","芒果","腾讯","爱奇艺","奇艺","哔哩哔哩","哔哩"],
+    "ijk" => [
+        [
+            "group" => "软解码",
+            "options" => [
+                ["category" => 4,"name" => "opensles","value" => "0"],
+                ["category" => 1,"name" => "fflags","value" => "fastseek"],
+                ["category" => 4,"name" => "framedrop","value" => "1"],
+                ["category" => 4,"name" => "enable-accurate-seek","value" => "0"],
+                ["category" => 4,"name" => "start-on-prepared","value" => "1"],
+                ["category" => 1,"name" => "http-detect-range-support","value" => "0"],
+                ["category" => 4,"name" => "mediacodec-handle-resolution-change","value" => "0"],
+                ["category" => 2,"name" => "skip_loop_filter","value" => "48"],
+                ["category" => 4,"name" => "reconnect","value" => "1"],
+                ["category" => 4,"name" => "overlay-format","value" => "842225234"],
+                ["category" => 4,"name" => "mediacodec","value" => "0"],
+                ["category" => 4,"name" => "mediacodec-auto-rotate","value" => "0"],
+                ["category" => 4,"name" => "soundtouch","value" => "1"],
+                ["category" => 4,"name" => "mediacodec-hevc","value" => "0"],
+                ["category" => 1,"name" => "dns_cache_timeout","value" => "600000000"]
+            ]
+        ],
+        [
+            "group" => "硬解码",
+            "options" => [
+                ["category" => 4,"name" => "opensles","value" => "0"],
+                ["category" => 1,"name" => "fflags","value" => "fastseek"],
+                ["category" => 4,"name" => "framedrop","value" => "1"],
+                ["category" => 4,"name" => "enable-accurate-seek","value" => "0"],
+                ["category" => 4,"name" => "start-on-prepared","value" => "1"],
+                ["category" => 1,"name" => "http-detect-range-support","value" => "0"],
+                ["category" => 4,"name" => "mediacodec-handle-resolution-change","value" => "1"],
+                ["category" => 2,"name" => "skip_loop_filter","value" => "48"],
+                ["category" => 4,"name" => "reconnect","value" => "1"],
+                ["category" => 4,"name" => "overlay-format","value" => "842225234"],
+                ["category" => 4,"name" => "mediacodec","value" => "1"],
+                ["category" => 4,"name" => "mediacodec-auto-rotate","value" => "1"],
+                ["category" => 4,"name" => "soundtouch","value" => "1"],
+                ["category" => 4,"name" => "mediacodec-hevc","value" => "1"],
+                ["category" => 1,"name" => "dns_cache_timeout","value" => "600000000"]
+            ]
+        ]
+    ],
+    "rules" => [
+        ["name" => "lz","hosts" => ["vip.lz","hd.lz","v.cdnlz"],"regex" => ["#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:6.433333,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY","#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"]],
+        ["name" => "蜗牛直连去广","hosts" => ["vip.123pan.cn","rescdn.wuxivlog.cn"],"regex" => ["#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:20.840000,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY","#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:10.120000,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY","#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"]],
+        ["name" => "ff","hosts" => ["vip.ffzy","hd.ffzy"],"regex" => ["#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:6.666667,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY","#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"]],
+        ["name" => "bf","hosts" => ["bfzy","s5.bfzycdn"],"regex" => ["#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:3,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY"]],
+        ["name" => "hs","hosts" => ["huoshan.com"],"regex" => ["item_id="]],
+        ["name" => "dy","hosts" => ["douyin.com"],"regex" => ["is_play_url="]],
+        ["name" => "cl","hosts" => ["magnet"],"regex" => ["最 新","直 播","更 新"]]
+    ],
+    "ads" => ["mimg.0c1q0l.cn","www.googletagmanager.com","www.google-analytics.com","mc.usihnbcq.cn","mg.g1mm3d.cn","mscs.svaeuzh.cn","cnzz.hhttm.top","tp.vinuxhome.com","cnzz.mmstat.com","www.baihuillq.com","s23.cnzz.com","z3.cnzz.com","c.cnzz.com","stj.v1vo.top","z12.cnzz.com","img.mosflower.cn","tips.gamevvip.com","ehwe.yhdtns.com","xdn.cqqc3.com","www.jixunkyy.cn","sp.chemacid.cn","hm.baidu.com","s9.cnzz.com","z6.cnzz.com","um.cavuc.com","mav.mavuz.com","wofwk.aoidf3.com","z5.cnzz.com","xc.hubeijieshikj.cn","tj.tianwenhu.com","xg.gars57.cn","k.jinxiuzhilv.com","cdn.bootcss.com","ppl.xunzhuo123.com","xomk.jiangjunmh.top","img.xunzhuo123.com","z1.cnzz.com","s13.cnzz.com","xg.huataisasangao.cn","z7.cnzz.com","z2.cnzz.com","s96.cnzz.com","q11.cnzz.com","thy.dacedsfa.cn","xg.whsbpw.cn","s19.cnzz.com","z8.cnzz.com","s4.cnzz.com","f5w.as12df.top","ae01.alicdn.com","www.92424.cn","k.wudejia.com","vivovip.mmszxc.top","qiu.xixiqiu.com","cdnjs.hnfenxun.com","cms.qdwght.com"],
+    "lives" => [
+        ["name" => "综合直播","type" => 0,"playerType" => 2,"url" => "https://gongdian.top/tv/iptv/","ua" => "bingcha/1.1 (mianfeifenxiang) "],
+        ["name" => "超级电影直播","type" => 0,"url" => "https://yibo.tv1288.xyz/000000","playerType" => 2]
+    ]
+];
+
+// ========== 配置区 ==========
+// sites数据源（支持本地路径或远程URL）
+$siteSources = [
+    'cj.json',
+    'cj2.json',
+    'diy.json',
+    'other.json',
+];
+
+// parses数据源（支持本地路径或远程URL）
+$parseSources = [
+    'jx.json',
+];
+// ========== 配置区 ==========
+
+// 合并sites数据
+foreach ($siteSources as $source) {
+    $data = is_url($source) ? file_get_contents($source) : (file_exists($source) ? file_get_contents($source) : null);
+    if ($data) {
+        $json = json_decode($data, true);
+        if (is_array($json)) {
+            $template['sites'] = array_merge($template['sites'], $json);
+        }
+    }
+}
+
+// 合并parses数据
+foreach ($parseSources as $source) {
+    $data = is_url($source) ? file_get_contents($source) : (file_exists($source) ? file_get_contents($source) : null);
+    if ($data) {
+        $json = json_decode($data, true);
+        if (is_array($json)) {
+            $template['parses'] = array_merge($template['parses'], $json);
+        }
+    }
+}
+
+// 判断是否为URL
+function is_url($str) {
+    return preg_match('/^https?:\/\//', $str) === 1;
+}
+
+// 输出合并后的JSON
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode($template, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);

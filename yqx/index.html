@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON合并工具</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        pre { background: #f4f4f4; padding: 15px; overflow-x: auto; max-height: 400px; }
+        .status { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        #console-output { 
+            background: #1e1e1e; 
+            color: #d4d4d4; 
+            padding: 15px; 
+            margin-top: 20px;
+            max-height: 300px; 
+            overflow-y: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+        .log-line { margin: 3px 0; border-bottom: 1px solid #333; padding: 2px 0; }
+        .log-info { color: #d4d4d4; }
+        .log-warn { color: #dcdcaa; }
+        .log-error { color: #f48771; }
+    </style>
+</head>
+<body>
+    <h1>JSON合并工具</h1>
+    <button id="mergeBtn">合并并下载JSON</button>
+    <div id="status"></div>
+    <pre id="output"></pre>
+    <div id="console-output"></div>
+
+    <script>
+    // ========== 配置区 ==========
+    // sites数据源列表（支持相对路径或URL）
+    const siteSources = ['cj.json', 'cj2.json', 'diy.json', 'other.json'];
+    // parses数据源列表
+    const parseSources = ['jx.json'];
+    // ========== 配置区 ==========
+
+    // 控制台日志显示到页面
+    const consoleOutput = document.getElementById('console-output');
+    function appendLog(type, args) {
+        const line = document.createElement('div');
+        line.className = 'log-line log-' + type;
+        line.textContent = '[' + type.toUpperCase() + '] ' + Array.from(args).map(a => 
+            typeof a === 'object' ? JSON.stringify(a) : String(a)
+        ).join(' ');
+        consoleOutput.appendChild(line);
+        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+    }
+    const originalLog = console.log;
+    const originalWarn = console.warn;
+    const originalError = console.error;
+    console.log = function(...args) { appendLog('info', args); originalLog.apply(console, args); };
+    console.warn = function(...args) { appendLog('warn', args); originalWarn.apply(console, args); };
+    console.error = function(...args) { appendLog('error', args); originalError.apply(console, args); };
+
+    const template = {
+        "spider": "./yqx.jar",
+        "wallpaper": "https://bing.img.run/rand.php",
+        "headers": [
+            { "host": "www.gs4x7nq4.com", "header": { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.6261.95 Safari/537.36" } },
+            { "host": "brand.hinrijv.cc", "header": { "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/jpg,image/webp,image/apng,*/*;q=0.8" } }
+        ],
+        "sites": [
+            { "key": "爱奇艺资源", "name": "爱奇艺|CJ", "type": 1, "api": "https://iqiyizyapi.com/api.php/provide/vod/", "searchable": 1, "quickSearch": 1, "categories": ["国产动漫", "日韩动漫", "欧美动漫", "港台动漫", "动漫电影", "动漫", "电影", "动作片", "喜剧片", "爱情片", "科幻片", "恐怖片", "剧情片", "战争片", "惊悚片", "家庭片", "古装片", "历史片", "悬疑片", "犯罪片", "灾难片", "记录片", "短片", "连续剧", "国产剧", "香港剧", "韩国剧", "欧美剧", "台湾剧", "日本剧", "海外剧", "泰国剧", "综艺", "大陆综艺", "港台综艺", "日韩综艺", "欧美综艺", "短剧"] },
+            { "key": "农民影视", "name": "农民|御", "type": 3, "api": "csp_XYQHiker", "searchable": 1, "quickSearch": 1, "filterable": 1, "ext": "./lib/御-农民影视.json" }
+        ],
+        "parses": [
+            { "name": "超级并发", "type": 3, "url": "Demo" },
+            { "name": "超级嗅探", "type": 3, "url": "Web" }
+        ],
+        "flags": ["youku", "qq", "QQ", "iqiyi", "qiyi", "letv", "sohu", "tudou", "pptv", "PPTV", "mgtv", "ltnb", "rx", "CL4K", "xfyun", "wuduzy", "wasu", "bilibili", "renrenmi", "xmm", "xigua", "m1905 ", "funshion ", "duoduozy", "xinluan", "ddzy", "tgqp", "tkqp", "XRJX", "优酷", "芒果", "腾讯", "爱奇艺", "奇艺", "哔哩哔哩", "哔哩"],
+        "ijk": [
+            { "group": "软解码", "options": [
+                { "category": 4, "name": "opensles", "value": "0" },
+                { "category": 1, "name": "fflags", "value": "fastseek" },
+                { "category": 4, "name": "framedrop", "value": "1" },
+                { "category": 4, "name": "enable-accurate-seek", "value": "0" },
+                { "category": 4, "name": "start-on-prepared", "value": "1" },
+                { "category": 1, "name": "http-detect-range-support", "value": "0" },
+                { "category": 4, "name": "mediacodec-handle-resolution-change", "value": "0" },
+                { "category": 2, "name": "skip_loop_filter", "value": "48" },
+                { "category": 4, "name": "reconnect", "value": "1" },
+                { "category": 4, "name": "overlay-format", "value": "842225234" },
+                { "category": 4, "name": "mediacodec", "value": "0" },
+                { "category": 4, "name": "mediacodec-auto-rotate", "value": "0" },
+                { "category": 4, "name": "soundtouch", "value": "1" },
+                { "category": 4, "name": "mediacodec-hevc", "value": "0" },
+                { "category": 1, "name": "dns_cache_timeout", "value": "600000000" }
+            ]},
+            { "group": "硬解码", "options": [
+                { "category": 4, "name": "opensles", "value": "0" },
+                { "category": 1, "name": "fflags", "value": "fastseek" },
+                { "category": 4, "name": "framedrop", "value": "1" },
+                { "category": 4, "name": "enable-accurate-seek", "value": "0" },
+                { "category": 4, "name": "start-on-prepared", "value": "1" },
+                { "category": 1, "name": "http-detect-range-support", "value": "0" },
+                { "category": 4, "name": "mediacodec-handle-resolution-change", "value": "1" },
+                { "category": 2, "name": "skip_loop_filter", "value": "48" },
+                { "category": 4, "name": "reconnect", "value": "1" },
+                { "category": 4, "name": "overlay-format", "value": "842225234" },
+                { "category": 4, "name": "mediacodec", "value": "1" },
+                { "category": 4, "name": "mediacodec-auto-rotate", "value": "1" },
+                { "category": 4, "name": "soundtouch", "value": "1" },
+                { "category": 4, "name": "mediacodec-hevc", "value": "1" },
+                { "category": 1, "name": "dns_cache_timeout", "value": "600000000" }
+            ]}
+        ],
+        "rules": [
+            { "name": "lz", "hosts": ["vip.lz", "hd.lz", "v.cdnlz"], "regex": ["#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:6.433333,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY", "#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"] },
+            { "name": "蜗牛直连去广", "hosts": ["vip.123pan.cn", "rescdn.wuxivlog.cn"], "regex": ["#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:20.840000,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY", "#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:10.120000,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY", "#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"] },
+            { "name": "ff", "hosts": ["vip.ffzy", "hd.ffzy"], "regex": ["#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:6.666667,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY", "#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"] },
+            { "name": "bf", "hosts": ["bfzy", "s5.bfzycdn"], "regex": ["#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:3,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY"] },
+            { "name": "hs", "hosts": ["huoshan.com"], "regex": ["item_id="] },
+            { "name": "dy", "hosts": ["douyin.com"], "regex": ["is_play_url="] },
+            { "name": "cl", "hosts": ["magnet"], "regex": ["最 新", "直 播", "更 新"] }
+        ],
+        "ads": ["mimg.0c1q0l.cn", "www.googletagmanager.com", "www.google-analytics.com", "mc.usihnbcq.cn", "mg.g1mm3d.cn", "mscs.svaeuzh.cn", "cnzz.hhttm.top", "tp.vinuxhome.com", "cnzz.mmstat.com", "www.baihuillq.com", "s23.cnzz.com", "z3.cnzz.com", "c.cnzz.com", "stj.v1vo.top", "z12.cnzz.com", "img.mosflower.cn", "tips.gamevvip.com", "ehwe.yhdtns.com", "xdn.cqqc3.com", "www.jixunkyy.cn", "sp.chemacid.cn", "hm.baidu.com", "s9.cnzz.com", "z6.cnzz.com", "um.cavuc.com", "mav.mavuz.com", "wofwk.aoidf3.com", "z5.cnzz.com", "xc.hubeijieshikj.cn", "tj.tianwenhu.com", "xg.gars57.cn", "k.jinxiuzhilv.com", "cdn.bootcss.com", "ppl.xunzhuo123.com", "xomk.jiangjunmh.top", "img.xunzhuo123.com", "z1.cnzz.com", "s13.cnzz.com", "xg.huataisasangao.cn", "z7.cnzz.com", "z2.cnzz.com", "s96.cnzz.com", "q11.cnzz.com", "thy.dacedsfa.cn", "xg.whsbpw.cn", "s19.cnzz.com", "z8.cnzz.com", "s4.cnzz.com", "f5w.as12df.top", "ae01.alicdn.com", "www.92424.cn", "k.wudejia.com", "vivovip.mmszxc.top", "qiu.xixiqiu.com", "cdnjs.hnfenxun.com", "cms.qdwght.com"],
+        "lives": [
+            { "name": "综合直播", "type": 0, "playerType": 2, "url": "https://gongdian.top/tv/iptv/", "ua": "bingcha/1.1 (mianfeifenxiang) " },
+            { "name": "超级电影直播", "type": 0, "url": "https://yibo.tv1288.xyz/000000", "playerType": 2 }
+        ]
+    };
+
+    function showStatus(msg, type) {
+        const status = document.getElementById('status');
+        status.className = 'status ' + type;
+        status.textContent = msg;
+    }
+
+    function getDateStr() {
+        const now = new Date();
+        return now.getFullYear() + '-' + 
+            String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+            String(now.getDate()).padStart(2, '0');
+    }
+
+    async function fetchJSON(url) {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('获取失败: ' + url);
+        return response.json();
+    }
+
+    async function mergeAndDownload() {
+        const btn = document.getElementById('mergeBtn');
+        const output = document.getElementById('output');
+        btn.disabled = true;
+        btn.textContent = '处理中...';
+        output.textContent = '';
+
+        try {
+            showStatus('开始合并...', 'info');
+
+            // 合并sites数据
+            let successCount = 0;
+            let failCount = 0;
+            for (const source of siteSources) {
+                try {
+                    const data = await fetchJSON(source);
+                    if (Array.isArray(data)) {
+                        template.sites = template.sites.concat(data);
+                        successCount++;
+                    }
+                } catch (e) {
+                    failCount++;
+                    console.warn('跳过 ' + source + ': ' + e.message);
+                }
+            }
+            showStatus(`sites合并完成: ${successCount}个成功, ${failCount}个失败 (详见控制台)`, failCount > 0 ? 'error' : 'success');
+
+            // 合并parses数据
+            successCount = 0;
+            failCount = 0;
+            for (const source of parseSources) {
+                try {
+                    const data = await fetchJSON(source);
+                    if (Array.isArray(data)) {
+                        template.parses = template.parses.concat(data);
+                        successCount++;
+                    }
+                } catch (e) {
+                    failCount++;
+                    console.warn('跳过 ' + source + ': ' + e.message);
+                }
+            }
+            showStatus(`parses合并完成: ${successCount}个成功, ${failCount}个失败 (详见控制台)`, failCount > 0 ? 'error' : 'success');
+
+            const jsonStr = JSON.stringify(template, null, 2);
+            output.textContent = jsonStr;
+
+            // 下载文件
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'yqx-' + getDateStr() + '.json';
+            a.click();
+            URL.revokeObjectURL(url);
+
+            showStatus('合并完成！已下载 yqx-' + getDateStr() + '.json', 'success');
+        } catch (e) {
+            showStatus('错误: ' + e.message, 'error');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '合并并下载JSON';
+        }
+    }
+
+    document.getElementById('mergeBtn').addEventListener('click', mergeAndDownload);
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+[
+    {"key": "csp_XBPQ_策驰影院","name":"策驰影院|御","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"./lib/策驰影院.json"},
+
+    {"key": "农民影视","name":"农民|御","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":1,"ext":"./lib/御-农民影视.json"},
+    {"key": "csp_XYQHiker_Vidhub视频库","name":"Vidhub视频库","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":1,"ext":"./lib/Vidhub视频库.json"},
+    {"key": "csp_XYQHiker_电影港","name":"电影港|磁4K","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":1,"ext":"./lib/电影港磁力.json"},
+    {"key": "csp_XYQHiker_88影院","name":"88影院|御","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":1,"ext":"./lib/御_88影院.json"},
+    {"key": "csp_XYQHiker_大地","name":"大地|御","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":1,"ext":"./lib/御_大地影视.json"},
+    {"key": "csp_XYQHiker_星辰影院","name":"星辰影院|御","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":1,"ext":"./lib/御_星辰影院.json"}
+]
