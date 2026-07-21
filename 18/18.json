@@ -1,0 +1,209 @@
+{
+  "spider": "./yqx.jar",
+  "wallpaper": "https://pic.12580.wang/f/K3f8/yqx.png",
+  "headers": [],
+  "sites": [
+    {
+      "key": "5x5x",
+      "name": "5x5x\u5f71\u9662",
+      "type": 3,
+      "api": "./5x5x.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://www.a3uiz8.com",
+        "timeout": "6000",
+        "catesSet": "\u5927\u9646&\u65e5\u97e9&\u6b27\u7f8e&\u52a8\u753b&\u4e09\u7ea7&\u70ed\u95e8&\u7cbe\u9009",
+        "tabsSet": "\u76f4\u8fde\u64ad\u653e&\u7f51\u9875\u64ad\u653e"
+      }
+    },
+    {
+      "key": "xp",
+      "name": "xp\u5929\u5802",
+      "type": 3,
+      "api": "./xp.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://allow.pwifeigh.cc",
+        "timeout": "6000",
+        "tabsSet": "\u7f51\u9875\u64ad\u653e&\u76f4\u8fde\u64ad\u653e"
+      }
+    },
+    {
+      "key": "jiuse",
+      "name": "\u4e5d\u8272\u89c6\u9891",
+      "type": 3,
+      "api": "./91.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://jiuse.me",
+        "timeout": "6000",
+        "catesSet": "91\u6700\u65b0&\u874c\u86aa\u6700\u65b0&\u7cbe\u54c1\u89c6\u9891",
+        "tabsSet": "\u76f4\u8fde\u64ad\u653e&\u7f51\u9875\u64ad\u653e"
+      }
+    }
+  ],
+  "parses": [
+    {
+      "name": "\u8d85\u7ea7\u55c5\u63a2",
+      "type": 3,
+      "url": "Web"
+    },
+    {
+      "name": "\u8d85\u7ea7\u5e76\u53d1",
+      "type": 3,
+      "url": "Demo"
+    }
+  ],
+  "flags": [
+    "\u76f4\u8fde\u64ad\u653e",
+    "\u7f51\u9875\u64ad\u653e",
+    "youku",
+    "qq",
+    "QQ",
+    "iqiyi",
+    "qiyi",
+    "letv",
+    "sohu",
+    "tudou",
+    "pptv",
+    "PPTV",
+    "mgtv",
+    "bilibili",
+    "xigua",
+    "m1905"
+  ],
+  "ijk": [
+    {
+      "group": "\u8f6f\u89e3\u7801",
+      "options": [
+        {
+          "category": 4,
+          "name": "opensles",
+          "value": "0"
+        },
+        {
+          "category": 1,
+          "name": "fflags",
+          "value": "fastseek"
+        },
+        {
+          "category": 4,
+          "name": "framedrop",
+          "value": "1"
+        },
+        {
+          "category": 4,
+          "name": "enable-accurate-seek",
+          "value": "0"
+        },
+        {
+          "category": 4,
+          "name": "mediacodec",
+          "value": "0"
+        },
+        {
+          "category": 4,
+          "name": "mediacodec-hevc",
+          "value": "0"
+        },
+        {
+          "category": 4,
+          "name": "reconnect",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "group": "\u786c\u89e3\u7801",
+      "options": [
+        {
+          "category": 4,
+          "name": "opensles",
+          "value": "0"
+        },
+        {
+          "category": 1,
+          "name": "fflags",
+          "value": "fastseek"
+        },
+        {
+          "category": 4,
+          "name": "framedrop",
+          "value": "1"
+        },
+        {
+          "category": 4,
+          "name": "enable-accurate-seek",
+          "value": "0"
+        },
+        {
+          "category": 4,
+          "name": "mediacodec",
+          "value": "1"
+        },
+        {
+          "category": 4,
+          "name": "mediacodec-hevc",
+          "value": "1"
+        },
+        {
+          "category": 4,
+          "name": "reconnect",
+          "value": "1"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "name": "lz",
+      "hosts": [
+        "vip.lz",
+        "hd.lz",
+        "v.cdnlz"
+      ],
+      "regex": [
+        "#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:6.433333,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY",
+        "#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"
+      ]
+    },
+    {
+      "name": "ff",
+      "hosts": [
+        "vip.ffzy",
+        "hd.ffzy"
+      ],
+      "regex": [
+        "#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:6.666667,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY",
+        "#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"
+      ]
+    },
+    {
+      "name": "bf",
+      "hosts": [
+        "bfzy",
+        "s5.bfzycdn"
+      ],
+      "regex": [
+        "#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:3,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY"
+      ]
+    }
+  ],
+  "ads": [
+    "mimg.0c1q0l.cn",
+    "www.googletagmanager.com",
+    "www.google-analytics.com",
+    "hm.baidu.com",
+    "cnzz.com",
+    "cnzz.mmstat.com"
+  ]
+}
