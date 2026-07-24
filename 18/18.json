@@ -1,6 +1,4 @@
 {
-  "spider": "./yqx.jar",
-  "wallpaper": "https://pic.12580.wang/f/K3f8/yqx.png",
   "headers": [],
   "sites": [
     {
@@ -17,6 +15,22 @@
         "timeout": "6000",
         "catesSet": "\u5927\u9646&\u65e5\u97e9&\u6b27\u7f8e&\u52a8\u753b&\u4e09\u7ea7&\u70ed\u95e8&\u7cbe\u9009",
         "tabsSet": "\u76f4\u8fde\u64ad\u653e&\u7f51\u9875\u64ad\u653e"
+      }
+    },
+    {
+      "key": "sehu",
+      "name": "\u8272\u864e\u89c6\u9891",
+      "type": 3,
+      "api": "./sehu.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 0,
+      "ext": {
+        "host": "https://www.sehu001.vip:9527",
+        "timeout": "6000",
+        "catesSet": "\u56fd\u4ea7&\u4f20\u5a92&\u65e5\u97e9&\u6b27\u7f8e&\u52a8\u6f2b",
+        "tabsSet": "\u76f4\u8fde\u64ad\u653e&\u4e0b\u8f7d\u64ad\u653e&\u7f51\u9875\u64ad\u653e"
       }
     },
     {
@@ -65,6 +79,7 @@
   ],
   "flags": [
     "\u76f4\u8fde\u64ad\u653e",
+    "\u4e0b\u8f7d\u64ad\u653e",
     "\u7f51\u9875\u64ad\u653e",
     "youku",
     "qq",
