@@ -121,8 +121,8 @@ async function search(wd, quick, pg) {
         pg = parseInt(pg, 10);
         pg = pg > 0 ? pg : 1;
 
-        // 搜索接口：/?s={wd}（WordPress 风格），仅取综合结果
-        let searchUrl = absUrl(`?s=${encodeURIComponent(wd || '')}${pg > 1 ? '&page=' + pg : ''}`);
+        // 搜索接口：/search/{wd}/，分页使用 /search/{wd}/page/{pg}/
+        let searchUrl = buildSearchUrl(wd, pg);
         let resHtml = await request(searchUrl);
         let VODS = getVodList(resHtml);
         let limit = VODS.length;
@@ -368,6 +368,13 @@ function buildPageUrl(typeId, pg) {
 
     // 全部使用 /page/N/ 风格分页（兼容 WordPress 与站点自定义）
     return absUrl(pg > 1 ? `/${path}/page/${pg}/` : `/${path}/`);
+}
+
+// 作用：根据关键词和页码构造搜索页 URL
+function buildSearchUrl(wd, pg) {
+    let keyword = encodeURIComponent(String(wd || '').trim());
+    if (!keyword) {return absUrl('/search/');}
+    return absUrl(pg > 1 ? `/search/${keyword}/page/${pg}/` : `/search/${keyword}/`);
 }
 
 // 作用：从完整 URL 中提取站点相对路径
