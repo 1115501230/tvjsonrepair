@@ -63,6 +63,38 @@
         "catesSet": "91\u6700\u65b0&\u874c\u86aa\u6700\u65b0&\u7cbe\u54c1\u89c6\u9891",
         "tabsSet": "\u76f4\u8fde\u64ad\u653e&\u7f51\u9875\u64ad\u653e"
       }
+    },
+    {
+      "key": "haijiao",
+      "name": "\u6d77\u89d2\u7f51",
+      "type": 3,
+      "api": "./haijiao.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://actor.iwxytxgk.cc",
+        "timeout": "6000",
+        "catesSet": "\u6d77\u89d2\u9996\u9875&\u6d77\u89d2\u70ed\u95e8&\u4eca\u65e5\u66f4\u65b0&\u6d77\u89d2\u770b\u7247",
+        "tabsSet": "\u7f51\u9875\u6d4f\u89c8"
+      }
+    },
+    {
+      "key": "modcraft",
+      "name": "\u6697\u7f51\u5916\u6d41",
+      "type": 3,
+      "api": "./modcraft.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://modcraft.net",
+        "timeout": "6000",
+        "catesSet": "\u6700\u65b0\u4e0a\u67b6&\u4eca\u65e5\u70ed\u64ad&\u56fd\u4ea7\u4e13\u533a&\u4e9a\u6d32\u60c5\u8272&\u65e0\u7801\u4e13\u533a",
+        "tabsSet": "\u7f51\u9875\u6d4f\u89c8"
+      }
     }
   ],
   "parses": [
