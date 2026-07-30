@@ -16,6 +16,21 @@
         "catesSet": "\u5927\u9646&\u65e5\u97e9&\u6b27\u7f8e&\u52a8\u753b&\u4e09\u7ea7&\u70ed\u95e8&\u7cbe\u9009",
         "tabsSet": "\u76f4\u8fde\u64ad\u653e&\u7f51\u9875\u64ad\u653e"
       }
+    },{
+      "key": "66aayy",
+      "name": "66aayy.com",
+      "type": 3,
+      "api": "./66aayy.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://www.66aayy.com/",
+        "timeout": "6000",
+        "catesSet": "\u5927\u9646&\u65e5\u97e9&\u6b27\u7f8e&\u52a8\u753b&\u4e09\u7ea7&\u70ed\u95e8&\u7cbe\u9009",
+        "tabsSet": "\u76f4\u8fde\u64ad\u653e&\u7f51\u9875\u64ad\u653e"
+      }
     },
     {
       "key": "sehu",
