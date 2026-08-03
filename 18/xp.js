@@ -31,7 +31,7 @@ var KParams = {
 async function init(cfg) {
     try {
         // 去掉 host 结尾的 /，方便后面拼接 /v、/vs、详情页地址。
-        HOST = (cfg.ext?.host?.trim() || 'https://allow.pwifeigh.cc').replace(/\/$/, '');
+        HOST = (cfg.ext?.host?.trim() || 'https://xpxp618.com').replace(/\/$/, '');
 
         // 部分站点会校验 Referer，这里把 Referer 固定为站点根地址。
         KParams.headers['Referer'] = HOST;
