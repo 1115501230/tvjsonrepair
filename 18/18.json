@@ -98,7 +98,7 @@
     },
     {
       "key": "huaduziyuan",
-      "name": "花都",
+      "name": "花都1",
       "type": 3,
       "api": "./huaduziyuan.js",
       "searchable": 1,
