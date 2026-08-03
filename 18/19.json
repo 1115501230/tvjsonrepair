@@ -1,0 +1,256 @@
+{
+  "headers": [],
+  "sites": [
+    {
+      "key": "5x5x",
+      "name": "5x5x影院",
+      "type": 3,
+      "api": "./5x5x.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://www.a3uiz8.com",
+        "timeout": "6000",
+        "catesSet": "大陆&日韩&欧美&动画&三级&热门&精选",
+        "tabsSet": "直连播放&网页播放"
+      }
+    },
+    {
+      "key": "sehu",
+      "name": "色虎视频",
+      "type": 3,
+      "api": "./sehu.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "changeable": 0,
+      "ext": {
+        "host": "https://www.sehu001.vip:9527",
+        "timeout": "6000",
+        "catesSet": "国产&传媒&日韩&欧美&动漫",
+        "tabsSet": "直连播放&下载播放&网页播放"
+      }
+    },
+    {
+      "key": "xp",
+      "name": "xp天堂",
+      "type": 3,
+      "api": "./xp.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://allow.pwifeigh.cc",
+        "timeout": "6000",
+        "tabsSet": "网页播放&直连播放"
+      }
+    },
+    {
+      "key": "jiuse",
+      "name": "九色视频",
+      "type": 3,
+      "api": "./91.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://jiuse.me",
+        "timeout": "6000",
+        "catesSet": "91最新&蝌蚪最新&精品视频",
+        "tabsSet": "直连播放&网页播放"
+      }
+    },
+    {
+      "key": "haijiao",
+      "name": "海角网",
+      "type": 3,
+      "api": "./haijiao.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://actor.iwxytxgk.cc",
+        "timeout": "6000",
+        "catesSet": "海角首页&海角热门&今日更新&海角看片",
+        "tabsSet": "网页浏览"
+      }
+    },
+    {
+      "key": "modcraft",
+      "name": "暗网外流",
+      "type": 3,
+      "api": "./modcraft.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "changeable": 0,
+      "ext": {
+        "host": "https://modcraft.net",
+        "timeout": "6000",
+        "catesSet": "最新上架&今日热播&国产专区&亚洲情色&无码专区",
+        "tabsSet": "网页浏览"
+      }
+    }
+  ],
+  "parses": [
+    {
+      "name": "超级嗅探",
+      "type": 3,
+      "url": "Web"
+    },
+    {
+      "name": "超级并发",
+      "type": 3,
+      "url": "Demo"
+    }
+  ],
+  "flags": [
+    "直连播放",
+    "下载播放",
+    "网页播放",
+    "youku",
+    "qq",
+    "QQ",
+    "iqiyi",
+    "qiyi",
+    "letv",
+    "sohu",
+    "tudou",
+    "pptv",
+    "PPTV",
+    "mgtv",
+    "bilibili",
+    "xigua",
+    "m1905"
+  ],
+  "ijk": [
+    {
+      "group": "软解码",
+      "options": [
+        {
+          "category": 4,
+          "name": "opensles",
+          "value": "0"
+        },
+        {
+          "category": 1,
+          "name": "fflags",
+          "value": "fastseek"
+        },
+        {
+          "category": 4,
+          "name": "framedrop",
+          "value": "1"
+        },
+        {
+          "category": 4,
+          "name": "enable-accurate-seek",
+          "value": "0"
+        },
+        {
+          "category": 4,
+          "name": "mediacodec",
+          "value": "0"
+        },
+        {
+          "category": 4,
+          "name": "mediacodec-hevc",
+          "value": "0"
+        },
+        {
+          "category": 4,
+          "name": "reconnect",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "group": "硬解码",
+      "options": [
+        {
+          "category": 4,
+          "name": "opensles",
+          "value": "0"
+        },
+        {
+          "category": 1,
+          "name": "fflags",
+          "value": "fastseek"
+        },
+        {
+          "category": 4,
+          "name": "framedrop",
+          "value": "1"
+        },
+        {
+          "category": 4,
+          "name": "enable-accurate-seek",
+          "value": "0"
+        },
+        {
+          "category": 4,
+          "name": "mediacodec",
+          "value": "1"
+        },
+        {
+          "category": 4,
+          "name": "mediacodec-hevc",
+          "value": "1"
+        },
+        {
+          "category": 4,
+          "name": "reconnect",
+          "value": "1"
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "name": "lz",
+      "hosts": [
+        "vip.lz",
+        "hd.lz",
+        "v.cdnlz"
+      ],
+      "regex": [
+        "#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:6.433333,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY",
+        "#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"
+      ]
+    },
+    {
+      "name": "ff",
+      "hosts": [
+        "vip.ffzy",
+        "hd.ffzy"
+      ],
+      "regex": [
+        "#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:6.666667,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY",
+        "#EXTINF.*?\\\\s+.*?1o.*?\\\\.ts\\\\s+"
+      ]
+    },
+    {
+      "name": "bf",
+      "hosts": [
+        "bfzy",
+        "s5.bfzycdn"
+      ],
+      "regex": [
+        "#EXT-X-DISCONTINUITY\\\\r*\\\\n*#EXTINF:3,[\\\\s\\\\S]*?#EXT-X-DISCONTINUITY"
+      ]
+    }
+  ],
+  "ads": [
+    "mimg.0c1q0l.cn",
+    "www.googletagmanager.com",
+    "www.google-analytics.com",
+    "hm.baidu.com",
+    "cnzz.com",
+    "cnzz.mmstat.com"
+  ]
+}
