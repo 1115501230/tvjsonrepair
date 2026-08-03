@@ -5,3 +5,4 @@ Tvbox绅士源
 适用于：tvbox、影视仓、ok影视等空壳软件订阅
 
 订阅地址:https://raw.githubusercontent.com/1115501230/tvjsonrepair/main/18/18.json
+加速地址：https://gh-proxy.org/https://github.com/1115501230/tvjsonrepair/blob/main/18/18.json
