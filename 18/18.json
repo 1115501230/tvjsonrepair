@@ -98,7 +98,7 @@
     },
     {
       "key": "huaduziyuan",
-      "name": "花都1",
+      "name": "花都",
       "type": 3,
       "api": "./huaduziyuan.js",
       "searchable": 1,
@@ -106,7 +106,7 @@
       "filterable": 0,
       "changeable": 0,
       "ext": {
-        "host": "https://b.hdfby.com",
+        "host": "https://hd29.huadutx.com/",
         "timeout": "6000",
         "catesSet": "最新上架&今日热播&国产专区&亚洲情色&无码专区",
         "tabsSet": "网页浏览"
