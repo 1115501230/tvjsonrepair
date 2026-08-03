@@ -105,7 +105,10 @@ async function home(filter) {
 
 async function homeVod() {
     try {
-        let VODS = getVodList(KParams.resHtml);
+        // 首页推荐：直接请求"最新上架"分类页（避免首页 JS 动态加载，
+        // 导致预取的静态 HTML 中无 <a href="/v/..."> 卡片，从而 getVodList 解析为空）
+        let resHtml = await request(absUrl('/c/new'));
+        let VODS = getVodList(resHtml);
         return JSON.stringify({list: VODS});
     } catch (e) {
         console.error('获取推荐失败:', e.message);
